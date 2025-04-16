@@ -1,0 +1,148 @@
+{
+    "icon_theme": {
+        "mode": "system",
+        "light": "Zed (Default)",
+        "dark": "Material Icon Theme"
+    },
+    "ssh_connections": [
+        {
+            "host": "10.244.85.115",
+            "username": "root",
+            "projects": [
+                {
+                    "paths": ["/root/ubuntu-custom"]
+                }
+            ]
+        }
+    ],
+    "assistant": {
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "claude-3-7-sonnet-latest"
+        },
+        "version": "2"
+    },
+    "vim_mode": false,
+    "features": {
+        "edit_prediction_provider": "supermaven",
+        "copilot": false
+    },
+    "scroll_beyond_last_line": "off",
+    "cursor_blink": false,
+    "theme": "Gruvbox Dark Hard",
+    "tab_size": 4,
+    "scrollbar": {
+        "show": "never"
+    },
+    "ui_font_size": 14,
+    "ui_font_family": "Geist Mono",
+    "buffer_font_size": 12,
+    "buffer_font_family": "Geist Mono",
+    "buffer_line_height": {
+        "custom": 1.25
+    },
+    "lsp": {
+        "gopls": {
+            "initialization_options": {
+                "hints": {
+                    "assignVariableTypes": true,
+                    "compositeLiteralFields": true,
+                    "compositeLiteralTypes": true,
+                    "constantValues": true,
+                    "functionTypeParameters": true,
+                    "parameterNames": true,
+                    "rangeVariableTypes": true
+                }
+            }
+        },
+        "pyright": {
+            "settings": {
+                "python": {
+                    "pythonPath": ".venv/bin/python3"
+                },
+                "python.analysis": {
+                    "diagnosticMode": "workspace"
+                }
+            }
+        },
+        "terraform-ls": {
+            "initialization_options": {
+                "experimentalFeatures": {
+                    "prefillRequiredFields": true
+                }
+            }
+        }
+    },
+    "terminal": {
+        "font_size": 12,
+        "line_height": {
+            "custom": 1.25
+        },
+        "dock": "bottom"
+    },
+    "git": {
+        "git_gutter": "tracked_files",
+        "inline_blame": {
+            "enabled": true
+        }
+    },
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    },
+    "languages": {
+        "Python": {
+            "format_on_save": [
+                {
+                    "external": {
+                        "command": "ruff",
+                        "arguments": [
+                            "check",
+                            "--select",
+                            "I",
+                            "--fix",
+                            "--stdin-filename",
+                            "{buffer_path}"
+                        ]
+                    }
+                },
+                {
+                    "external": {
+                        "command": "ruff",
+                        "arguments": [
+                            "format",
+                            "--stdin-filename",
+                            "{buffer_path}"
+                        ]
+                    }
+                }
+            ]
+        },
+        "HTML": {
+            "tab_size": 2,
+            "format_on_save": "off"
+        },
+        "YAML": {
+            "tab_size": 2
+        },
+        "JSON": {
+            "tab_size": 2,
+            "format_on_save": "on"
+        },
+        "Terraform": {
+            "tab_size": 2,
+            "format_on_save": "on"
+        },
+        "Ruby": {
+            "tab_size": 2
+        }
+    },
+    "line_indicator_format": "short",
+    "tab_bar": {
+        "show_nav_history_buttons": true
+    },
+    "file_types": {
+        "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+        "Ruby": ["*.pp", "*.erb", "*.rb"]
+    }
+}

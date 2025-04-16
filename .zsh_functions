@@ -1,0 +1,112 @@
+# Standardize success and failure output
+empty() { printf "\n"; }
+info() {  printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"; }
+user() { printf "\r  [ \033[0;35m>>\033[0m ] %s\n" "$1"; }
+success() { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"; }
+warn() { printf "\r\033[2K  [\033[0;33mWARN\033[0m] %s\n" "$1"; }
+fail() { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"; }
+fail_hard() {
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
+    echo ""
+    exit
+}
+
+# Scan ip network. Input in x.x.x.x/x format
+ipscan() {
+    # Check if an argument is provided
+    if [ -z "$1" ]; then
+        echo "Usage: ipscan <network>"
+        echo "Example: ipscan 10.10.10.0/24"
+        return 1
+    fi
+
+    # Execute the nmap command with the provided network argument
+    nmap -n -sn "$1" -oG - | awk '/Up$/{print $2}'
+}
+
+# Print public ip
+myip() {
+    INTERNETIP="$(dig +short myip.opendns.com @resolver1.opendns.com -4)"
+    echo $(jq -n --arg internetip "$INTERNETIP" '{"public_ip":$internetip}')
+}
+
+# Wait for server to be available and then ssh into it
+waitfor() {
+    local hostname="$1"
+    echo "Waiting for $hostname to become available..."
+
+    # Wait until the host is reachable via ping
+    while ! ping -c 1 -W 1 "$hostname" &> /dev/null; do
+        sleep 1
+    done
+
+    echo "$hostname is reachable. Checking if SSH is available..."
+
+    # Wait until the SSH port (22) is available
+    while ! nc -z "$hostname" 22 &> /dev/null; do
+        sleep 1
+    done
+
+    echo "SSH is now available on $hostname. Attempting to SSH..."
+    ssh "$hostname"
+}
+
+getCertNames() {
+    if [ -z "${1}" ]; then
+        echo "ERROR: No domain specified."
+        return 1
+    fi
+
+    local domain="${1}"
+    info "Testing ${domain}…"
+    empty
+
+    local tmp
+    tmp=$(echo -e "GET / HTTP/1.0\\nEOT" \
+        | openssl s_client -connect "${domain}:443" 2>&1)
+
+    if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
+        local certText
+        certText=$(echo "${tmp}" \
+            | openssl x509 -text -certopt "no_header, no_serial, no_version, \
+            no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux")
+        echo "Common Name:"
+        echo "" # newline
+        echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//"
+        echo "" # newline
+        echo "Subject Alternative Name(s):"
+        echo "" # newline
+        echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+            | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\\n" | tail -n +2
+        return 0
+    else
+        fail "ERROR: Certificate not found."
+        return 1
+    fi
+}
+
+check_certificate() {
+    local cert_file="$1"
+    if [[ ! -f "$cert_file" ]]; then
+        warn "File does not exist: $cert_file"
+        return 1
+    fi
+
+    info "Certificate File: $cert_file"
+    local end_date
+    local common_name
+    local san_names
+    end_date=$(openssl x509 -enddate -noout -in "$cert_file" | cut -d= -f2)
+    common_name=$(openssl x509 -noout -subject -in "$cert_file" | sed -e 's/^.*CN=\([^/]*\).*/\1/')
+    san_names=$(openssl x509 -noout -text -in "$cert_file" | grep -A1 "Subject Alternative Name:" | tail -n1 | sed -e 's/DNS://g' -e 's/,//g')
+    dec_serial=$(echo "obase=10; ibase=16; $(openssl x509 -noout -serial -in "$cert_file" | cut -d"=" -f2)" | bc)
+    local end_date_ts
+    local now_ts
+    end_date_ts=$(date -d "$end_date" +%s)
+    now_ts=$(date +%s)
+
+    info "Common Name: $common_name"
+    info "Decimal Serial: $dec_serial"
+    if [[ -n "$san_names" ]]; then info "Subject Alternative Names: $san_names"; fi
+    if [[ $end_date_ts -gt $now_ts ]]; then info "Valid until: $end_date"; else info "Expired on: $end_date"; fi
+}
