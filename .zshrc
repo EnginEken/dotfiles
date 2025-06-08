@@ -147,3 +147,4 @@ eval "$(atuin init zsh)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/eeken/.lmstudio/bin"
+export PATH="$PATH:/Users/eeken/tmp/puppet-editor-services"

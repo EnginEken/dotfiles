@@ -1,39 +1,47 @@
 {
-    "icon_theme": {
-        "mode": "system",
-        "light": "Zed (Default)",
-        "dark": "Material Icon Theme"
-    },
     "ssh_connections": [
         {
-            "host": "10.244.85.115",
+            "host": "clab",
             "username": "root",
             "projects": [
                 {
-                    "paths": ["/root/ubuntu-custom"]
+                    "paths": ["/root"]
                 }
             ]
         }
     ],
-    "assistant": {
+    "icon_theme": {
+        "mode": "system",
+        "light": "Puppet Icons",
+        "dark": "Material Icon Theme"
+    },
+    "agent": {
+        "always_allow_tool_actions": true,
+        "default_profile": "write",
         "default_model": {
             "provider": "zed.dev",
-            "model": "claude-3-7-sonnet-latest"
+            "model": "claude-3-7-sonnet"
         },
         "version": "2"
     },
     "vim_mode": false,
     "features": {
-        "edit_prediction_provider": "supermaven",
+        "edit_prediction_provider": "none",
         "copilot": false
     },
     "scroll_beyond_last_line": "off",
     "cursor_blink": false,
-    "theme": "Gruvbox Dark Hard",
+    "theme": "Gruvbox Light Hard",
+    // "theme": {
+    //   "mode": "system",
+    //   "dark": "Gruvbox Dark",
+    //   "light": "Gruvbox Light Hard"
+    // },
     "tab_size": 4,
     "scrollbar": {
-        "show": "never"
+        "show": "auto"
     },
+    "bottom_dock_layout": "left_aligned",
     "ui_font_size": 14,
     "ui_font_family": "Geist Mono",
     "buffer_font_size": 12,
@@ -70,6 +78,14 @@
                 "experimentalFeatures": {
                     "prefillRequiredFields": true
                 }
+            }
+        },
+        "puppet-languageserver": {
+            "binary": {
+                "arguments": [
+                    "--stdio",
+                    "--puppet-settings=--environment,production"
+                ]
             }
         }
     },
@@ -134,7 +150,12 @@
             "format_on_save": "on"
         },
         "Ruby": {
-            "tab_size": 2
+            "tab_size": 2,
+            "language_servers": ["!solargraph", "!rubocop", "!ruby-lsp"]
+        },
+        "Puppet": {
+            "tab_size": 2,
+            "format_on_save": "on"
         }
     },
     "line_indicator_format": "short",
@@ -143,6 +164,7 @@
     },
     "file_types": {
         "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-        "Ruby": ["*.pp", "*.erb", "*.rb"]
+        "Ruby": ["*.erb", "*.rb"],
+        "Puppet": ["*.pp"]
     }
 }
