@@ -12,7 +12,7 @@
     ],
     "icon_theme": {
         "mode": "system",
-        "light": "Puppet Icons",
+        "light": "Material Icon Theme",
         "dark": "Material Icon Theme"
     },
     "agent": {
@@ -31,12 +31,12 @@
     },
     "scroll_beyond_last_line": "off",
     "cursor_blink": false,
-    "theme": "Gruvbox Light Hard",
-    // "theme": {
-    //   "mode": "system",
-    //   "dark": "Gruvbox Dark",
-    //   "light": "Gruvbox Light Hard"
-    // },
+    // "theme": "Gruvbox Light Hard",
+    "theme": {
+        "mode": "system",
+        "dark": "Gruvbox Dark",
+        "light": "Gruvbox Light Hard"
+    },
     "tab_size": 4,
     "scrollbar": {
         "show": "auto"
@@ -79,15 +79,15 @@
                     "prefillRequiredFields": true
                 }
             }
-        },
-        "puppet-languageserver": {
-            "binary": {
-                "arguments": [
-                    "--stdio",
-                    "--puppet-settings=--environment,production"
-                ]
-            }
         }
+        // "puppet-languageserver": {
+        //     "binary": {
+        //         "arguments": [
+        //             "--stdio",
+        //             "--puppet-settings=--environment,production"
+        //         ]
+        //     }
+        // }
     },
     "terminal": {
         "font_size": 12,
@@ -108,31 +108,46 @@
     },
     "languages": {
         "Python": {
-            "format_on_save": [
+            "language_servers": ["ruff"],
+            "format_on_save": "on",
+            "formatter": [
                 {
-                    "external": {
-                        "command": "ruff",
-                        "arguments": [
-                            "check",
-                            "--select",
-                            "I",
-                            "--fix",
-                            "--stdin-filename",
-                            "{buffer_path}"
-                        ]
+                    "code_actions": {
+                        "source.organizeImports.ruff": true,
+                        "source.fixAll.ruff": true
                     }
                 },
                 {
-                    "external": {
-                        "command": "ruff",
-                        "arguments": [
-                            "format",
-                            "--stdin-filename",
-                            "{buffer_path}"
-                        ]
+                    "language_server": {
+                        "name": "ruff"
                     }
                 }
             ]
+            // "format_on_save": [
+            //     {
+            //         "external": {
+            //             "command": "ruff",
+            //             "arguments": [
+            //                 "check",
+            //                 "--select",
+            //                 "I",
+            //                 "--fix",
+            //                 "--stdin-filename",
+            //                 "{buffer_path}"
+            //             ]
+            //         }
+            //     },
+            //     {
+            //         "external": {
+            //             "command": "ruff",
+            //             "arguments": [
+            //                 "format",
+            //                 "--stdin-filename",
+            //                 "{buffer_path}"
+            //             ]
+            //         }
+            //     }
+            // ]
         },
         "HTML": {
             "tab_size": 2,

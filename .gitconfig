@@ -1,0 +1,16 @@
+[user]
+    email = engin.eken@avanti.space
+    name = eeken
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    side-by-side = true
+
+[merge]
+    conflictstyle = zdiff3
