@@ -1,0 +1,11 @@
+Host canalab
+    HostName 10.236.88.101
+    User eeken
+    IdentityFile ~/.ssh/id_rsa
+
+Host *
+    HostKeyAlgorithms=+ssh-rsa
+    User eeken
+    IdentityFile ~/.ssh/id_rsa
+    PubkeyAcceptedKeyTypes +ssh-rsa
+    SetEnv TERM=xterm-256color

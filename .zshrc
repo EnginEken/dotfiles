@@ -122,7 +122,7 @@ fi
 alias act="source ~/.scripts/activate_venv.sh"
 alias pyinit="~/.scripts/initenv.sh"
 alias cat="bat -p"
-alias mr="source ~/.scripts/mr.sh"
+#alias mr="source ~/.scripts/mr.sh"
 alias books="~/.scripts/start_mkdocs.sh"
 alias change_background="~/.scripts/change_background.sh"
 alias cop="pbcopy"
@@ -139,12 +139,17 @@ alias routes6="netstat -nr -f inet6"
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(jump shell)"
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/eeken/.lmstudio/bin"
+export PATH="/Users/eeken/.local/bin:$PATH"
+
+# Puppet related paths
 export PATH="$PATH:/Users/eeken/tmp/puppet-editor-services"
+export PATH="/opt/homebrew/opt/ruby@3.2/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.2.0/bin:$PATH"

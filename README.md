@@ -66,20 +66,14 @@ ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/p10k.zsh ~/.p10k.zsh
 ```
 
-## Dark Mode Notifications
+## Additional installation
 
-### Install dark-mode-notify
 ```bash
-git clone https://github.com/bouk/dark-mode-notify
-cd dark-mode-notify
-make install
-```
+uv tool install harlequin
+uv tool install 'harlequin[postgres,mysql,s3]'
 
-### Set up plist file
-```bash
-# Assuming your plist file is in your dotfiles repo
-cp ~/dotfiles/com.username.dark-mode-notify.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.username.dark-mode-notify.plist
+atuin register -u <YOUR_USERNAME> -e <YOUR EMAIL>
+atuin sync -f
 ```
 
 ## Final Steps
