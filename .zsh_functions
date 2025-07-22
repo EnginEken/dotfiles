@@ -160,15 +160,73 @@ check_certificate() {
 }
 
 setlight() {
-    defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
     osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
 }
 
 setdark() {
-    defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
     osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
 }
 
 setauto() {
-    defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
+    osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
+}
+
+# -----------------------------------------------------------------------------
+# init_project: create .venv, (optionally) .gitignore, and scaffold pyright config
+# -----------------------------------------------------------------------------
+initpyenv() {
+  local PROJECTS=""
+
+  # helper for usage
+  print_usage() {
+    echo "Usage: init_project [-p|--project <project_names>]"
+    echo "  -p, --project    comma-separated list for gitignore (e.g. python or python,django)"
+  }
+
+  # parse args
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -p|--project)
+        PROJECTS="$2"
+        shift 2
+        ;;
+      -h|--help)
+        print_usage
+        return 0
+        ;;
+      *)
+        echo "Unknown option: $1"
+        print_usage
+        return 1
+        ;;
+    esac
+  done
+
+  # create the virtual environment
+  python3 -m venv .venv && \
+    echo "✔ Virtual environment created in .venv/"
+
+  # 2) (optional) scaffold pyrightconfig.json
+  # Uncomment if you want to generate a default pyright config
+  #cat > pyrightconfig.json <<-EOL
+  #{
+  #  "venvPath": ".",
+  #  "venv": ".venv"
+  #}
+  #EOL
+  #echo "✔ pyrightconfig.json file created"
+
+  # fetch and write .gitignore if requested
+  if [[ -n $PROJECTS ]]; then
+    local RESPONSE
+    RESPONSE=$(curl -s "https://www.toptal.com/developers/gitignore/api/$PROJECTS")
+    if [[ $? -eq 0 && -n $RESPONSE ]]; then
+      echo "$RESPONSE" > .gitignore
+      echo "✔ .gitignore created for: $PROJECTS"
+    else
+      echo "✖ Failed to fetch .gitignore for: $PROJECTS"
+    fi
+  fi
+
+  echo "🏁 init_project complete."
 }

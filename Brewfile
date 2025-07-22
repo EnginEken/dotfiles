@@ -1,6 +1,7 @@
 tap "hashicorp/tap"
 brew "awscli"
 brew "bat"
+brew "btop"
 brew "fzf"
 brew "git-delta"
 brew "python@3.13"
