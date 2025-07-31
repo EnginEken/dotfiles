@@ -1,4 +1,4 @@
-theme = dark:GruvboxDark,light:GruvboxLightHard
+theme = dark:GruvboxDark,light:GruvboxLight
 window-theme = system
 font-family = "Geist Mono"
 font-family-bold = "Geist Mono Bold"
