@@ -25,8 +25,7 @@
     },
     "vim_mode": false,
     "features": {
-        "edit_prediction_provider": "none",
-        "copilot": false
+        "edit_prediction_provider": "none"
     },
     "scroll_beyond_last_line": "off",
     "cursor_blink": false,
@@ -34,7 +33,7 @@
     "theme": {
         "mode": "system",
         "dark": "Gruvbox Dark",
-        "light": "Gruvbox Light Hard"
+        "light": "Gruvbox Light"
     },
     "tab_size": 4,
     "scrollbar": {
@@ -153,7 +152,8 @@
             "format_on_save": "off"
         },
         "YAML": {
-            "formatter": "language_server"
+            "formatter": "language_server",
+            "tab_size": 2
         },
         "JSON": {
             "tab_size": 2,
