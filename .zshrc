@@ -114,10 +114,10 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 # Exports
-# if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
-#   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
-#   export PATH=`gem environment gemdir`/bin:$PATH
-# fi
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
 
 alias act="source ~/.scripts/activate_venv.sh"
 alias pyinit="~/.scripts/initenv.sh"
@@ -152,8 +152,8 @@ export PATH="/Users/eeken/.local/bin:$PATH"
 
 # Puppet related paths
 # export PATH="$PATH:/Users/eeken/tmp/puppet-editor-services"
-# export PATH="/opt/homebrew/opt/ruby@3.2/bin:$PATH"
-# export PATH="/opt/homebrew/lib/ruby/gems/3.2.0/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby@3.2/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.2.0/bin:$PATH"
 # export PATH="$PATH:$HOME/go/bin"
 
 autoload -U +X bashcompinit && bashcompinit
