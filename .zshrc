@@ -31,6 +31,9 @@ alias glo="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgree
 alias glos="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat"
 alias gl="git pull"
 alias grb="git rebase"
+alias gsh="git show --pretty=short --show-signature"
+alias gsta="git stash --all"
+alias gstap="git stash apply"
 
 [[ ! -f ~/.zsh_variables ]] || source ~/.zsh_variables
 [[ ! -f ~/.zsh_functions ]] || source ~/.zsh_functions
