@@ -29,33 +29,18 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ## Installing Packages
 
 ### Install packages from Brewfile
+
+This will install almost all of the apps and cli tools needed including uv, ghostty, starship, atuin, etc.
+
 ```bash
 brew bundle
 ```
 
 ## Shell Customization
 
-### Install Oh My Zsh
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
+For now, there is no plugin management tool in use with this dotfiles. Aliases are created manually and other bits are managed with scripts. Only plugins installed with homebrew are `zsh-syntax-highlighting` and `zsh-autosuggestions`. Maybe in the future, `zinit` or `antigen` could be implemented.
 
-### Install Powerlevel10k Theme
-```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
-### Install zsh Plugins
-```bash
-# Install zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-# Install zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# Install fzf-tab
-git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
-```
+`omz` and `p10k` are also removed. Prompt is configured with `starship`.
 
 ## Apply Configuration Files
 
@@ -68,10 +53,15 @@ ln -sf ~/dotfiles/p10k.zsh ~/.p10k.zsh
 
 ## Additional installation
 
+`uv` is installed with homebrew.
+
 ```bash
+# Not so important to do
+
 uv tool install harlequin
 uv tool install 'harlequin[postgres,mysql,s3]'
 
+# This must be done
 atuin register -u <YOUR_USERNAME> -e <YOUR EMAIL>
 atuin sync -f
 ```
@@ -92,21 +82,11 @@ source ~/.zshrc
    git config --global user.email "your.email@example.com"
    ```
 
-2. **SSH keys** - Consider adding a reminder to set up SSH keys for GitHub/GitLab if needed
+2. **SSH keys** - It can be found in Bitwarden
 
-3. **Fonts** - If Powerlevel10k requires specific fonts, you might want to add:
-   ```bash
-   brew tap homebrew/cask-fonts
-   brew install --cask font-meslo-lg-nerd-font
-   ```
+3. **Fonts** - Geist Mono is installed with homebrew 
 
-4. **iTerm2** - If you use iTerm2 instead of Terminal.app, you might want to add its installation
-
-5. **Node/Python version management** - If you work with these languages, tools like nvm, pyenv might be worth adding
-
-6. **Visual Studio Code or other editor** - Consider adding setup for your code editor
-
-7. **macOS preferences** - You might want to include some useful macOS settings:
+4. **macOS preferences** - You might want to include some useful macOS settings:
    ```bash
    # Show hidden files
    defaults write com.apple.finder AppleShowAllFiles -bool true
