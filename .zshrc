@@ -5,6 +5,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-$ZSH_VERSION"
 
+# --- Aliases ---
 alias l="ls -alh"
 alias act="source ~/.scripts/activate_venv.sh"
 alias pyinit="~/.scripts/initenv.sh"
@@ -17,6 +18,19 @@ alias macports="sudo lsof -PiTCP -sTCP:LISTEN"
 alias routes="netstat -nr -f inet"
 alias routes6="netstat -nr -f inet6"
 alias dns="nslookup"
+alias ga="git add"
+alias gst="git status"
+alias gb="git branch"
+alias gbD="git branch --delete --force"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gcp="git cherry-pick"
+alias gcmsg="git commit --message"
+alias gd="git diff"
+alias glo="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all"
+alias glos="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat"
+alias gl="git pull"
+alias grb="git rebase"
 
 [[ ! -f ~/.zsh_variables ]] || source ~/.zsh_variables
 [[ ! -f ~/.zsh_functions ]] || source ~/.zsh_functions

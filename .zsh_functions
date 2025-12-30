@@ -99,6 +99,22 @@ mr() {
   esac
 }
 
+# Instead of creating alias as "git push origin $CURRENT_BRANCH"
+ggp() {
+  # Are we inside a git repo?
+  command git rev-parse --is-inside-work-tree &>/dev/null || {
+    echo "Not in a git repository"
+    return 1
+  }
+
+  # Determine branch (handles detached HEAD)
+  local branch
+  branch="$(command git symbolic-ref --quiet --short HEAD 2>/dev/null \
+            || command git rev-parse --short HEAD 2>/dev/null)" || return 1
+
+  command git push origin "$branch"
+}
+
 getCertNames() {
     if [ -z "${1}" ]; then
         echo "ERROR: No domain specified."
