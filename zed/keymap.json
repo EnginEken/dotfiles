@@ -9,10 +9,26 @@
             "cmd-shift-f": "editor::FindAllReferences",
             "cmd-shift-g": [
                 "agent::NewExternalAgentThread",
-                { "agent": "codex" }
+                { "agent": "codex" },
             ],
             "ctrl-shift-right": "pane::ActivateNextItem",
-            "ctrl-shift-left": "pane::ActivatePreviousItem"
-        }
-    }
+            "ctrl-shift-left": "pane::ActivatePreviousItem",
+        },
+    },
+    {
+        "context": "!Terminal",
+        "bindings": {
+            "ctrl-alt-`": ["workspace::SendKeystrokes", "ctrl-` shift-escape"],
+        },
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "ctrl-space t": "terminal_panel::ToggleFocus",
+            "ctrl-alt-`": [
+                "workspace::SendKeystrokes",
+                "shift-escape ctrl-space t",
+            ],
+        },
+    },
 ]
