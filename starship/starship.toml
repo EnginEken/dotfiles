@@ -2,14 +2,31 @@
 add_newline = false
 
 format = """
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
 $character"""
 
+[username]
+style_user = 'yellow'
+style_root = 'black bold'
+format = '\([$user]($style)@'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_symbol = ''
+ssh_only = false
+format = '[$hostname]($style)\) '
+style = 'yellow'
+
 [directory]
-# truncate_to_repo = false
-truncation_length = 4
+truncate_to_repo = false
+truncation_length = 1
+home_symbol = "~"
+fish_style_pwd_dir_length = 1
 style = "cyan"
 
 [git_branch]
@@ -25,11 +42,11 @@ staged = "+${count}"
 ahead = "⇡${count}"
 behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-untracked = "!${count}"
+untracked = "?${count}"
 renamed = ""
 deleted = ""
-conflicted = ""
-stashed = ""
+conflicted = "="
+stashed = '\$'
 
 [character]
 success_symbol = "[❯](green)"
