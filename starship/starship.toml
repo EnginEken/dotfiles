@@ -9,6 +9,9 @@ $git_branch\
 $git_status\
 $character"""
 
+right_format = """
+$python"""
+
 [username]
 style_user = 'yellow'
 style_root = 'black bold'
@@ -52,3 +55,9 @@ stashed = '\$'
 success_symbol = "[❯](green)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](purple)"
+
+[python]
+format = '[${symbol}(${version} )(\($virtualenv\))]($style)'
+symbol = '🐍 '
+style = "yellow"
+python_binary = ["python3", "python"]

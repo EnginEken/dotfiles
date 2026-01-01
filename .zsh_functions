@@ -115,6 +115,10 @@ ggp() {
   command git push origin "$branch"
 }
 
+take() {
+  mkdir -p "$1" && cd "$1"
+}
+
 getCertNames() {
     if [ -z "${1}" ]; then
         echo "ERROR: No domain specified."
