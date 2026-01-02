@@ -31,4 +31,14 @@
             ],
         },
     },
+    {
+        "context": "Workspace",
+        "bindings": {
+            "cmd-t": "terminal_panel::ToggleFocus",
+            "cmd-shift-right": "workspace::ActivatePaneRight",
+            "cmd-shift-left": "workspace::ActivatePaneLeft",
+            "cmd-shift-up": "workspace::ActivatePaneUp",
+            "cmd-shift-down": "workspace::ActivatePaneDown",
+        },
+    },
 ]
