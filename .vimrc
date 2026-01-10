@@ -20,7 +20,9 @@ set ignorecase
 set smartcase
 
 " ----- Clipboard -----
-set clipboard=unnamedplus
+"http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+set clipboard^=unnamed
+set clipboard^=unnamedplus
 
 " ----- Files -----
 set autoread            " Reload files changed outside Vim
