@@ -5,6 +5,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 autoload -Uz compinit
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump-$ZSH_VERSION"
 
+#autoload -U select-word-style
+#select-word-style bash
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 # --- Aliases ---
 alias l="ls -alh"
 alias act="source ~/.scripts/activate_venv.sh"
