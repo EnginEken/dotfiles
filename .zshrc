@@ -11,6 +11,7 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # --- Aliases ---
 alias l="ls -alh"
+alias cd="z"
 alias act="source ~/.scripts/activate_venv.sh"
 alias pyinit="~/.scripts/initenv.sh"
 alias cat="bat -p"
@@ -46,10 +47,10 @@ zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # --- Evals ---
-eval "$(jump shell)"
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # --- Exports ---
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
