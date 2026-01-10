@@ -1,3 +1,5 @@
+let mapleader = " "
+
 " ----- Basic sane defaults -----
 set nocompatible
 syntax on
@@ -44,3 +46,9 @@ set completeopt=menu,menuone
 " Reduce noise
 set noerrorbells
 set shortmess+=c
+
+" Leader + Arrow keys for split navigation
+nnoremap <leader><Left>  <C-w>h
+nnoremap <leader><Down>  <C-w>j
+nnoremap <leader><Up>    <C-w>k
+nnoremap <leader><Right> <C-w>l
