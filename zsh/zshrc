@@ -12,6 +12,7 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # --- Aliases ---
 alias l="ls -alh"
 alias cd="z"
+alias find="fd"
 alias act="source ~/.scripts/activate_venv.sh"
 alias pyinit="~/.scripts/initenv.sh"
 alias cat="bat -p"
