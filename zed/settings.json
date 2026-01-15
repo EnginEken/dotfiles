@@ -1,4 +1,9 @@
 {
+  "agent_servers": {
+    "codex": {
+      "default_model": "gpt-5.2-codex/high"
+    }
+  },
   "ssh_connections": [
     {
       "host": "clab",

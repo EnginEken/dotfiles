@@ -40,6 +40,7 @@ alias grb="git rebase"
 alias gsh="git show --pretty=short --show-signature"
 alias gsta="git stash --all"
 alias gstap="git stash apply"
+alias azup="docker run -it --mount type=bind,src=$HOME/.ssh,dst=/root/.ssh mcr.microsoft.com/azure-cli:azurelinux3.0"
 
 [[ ! -f ~/.zsh_variables ]] || source ~/.zsh_variables
 [[ ! -f ~/.zsh_functions ]] || source ~/.zsh_functions
