@@ -46,6 +46,7 @@ Firefox profile needs to be restored with following below steps
 4. Extract `zen_backup.tar.gz` to the copied root folder directory with `tar -xzf zen_backup.tar.gz -C ~/Library/Application\ Support/zen/Profile/<new_profile_folder_path>`
 5. Start the Zen Browser
 6. Login to Firefox and start syncing
+7. Go back to `about:profile` and set the newly created profile as the default profile
 
 ## Additional installation
 
