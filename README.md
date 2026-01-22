@@ -36,6 +36,17 @@ defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder ShowPathbar -bool true
 ```
 
+## Zen Browser Restore
+
+Firefox profile needs to be restored with following below steps
+
+1. Go to `about:profiles` in Firefox.
+2. Click on "Create a New Profile."
+3. Copy the root folder path and close the Zen browser
+4. Extract `zen_backup.tar.gz` to the copied root folder directory with `tar -xzf zen_backup.tar.gz -C ~/Library/Application\ Support/zen/Profile/<new_profile_folder_path>`
+5. Start the Zen Browser
+6. Login to Firefox and start syncing
+
 ## Additional installation
 
 ```bash
