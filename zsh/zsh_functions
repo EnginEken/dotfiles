@@ -87,7 +87,7 @@ mr() {
   # open in the right browser
   case "$OSTYPE" in
     darwin*)
-      open -a Zen "$mr_url"
+      open -a Arc "$mr_url"
       ;;
     linux*)
       /usr/bin/google-chrome "$mr_url"
