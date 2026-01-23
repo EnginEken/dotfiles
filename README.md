@@ -53,6 +53,9 @@ Firefox profile needs to be restored with following below steps
 ```bash
 # This must be done
 atuin register -u <YOUR_USERNAME> -e <YOUR EMAIL>
+# If register give error as 'User is already in use' try logging in first with below
+atuin login -u eeken
+# Then enter the password and then all of the keys not just one word
 atuin sync -f
 
 # Nice to have
