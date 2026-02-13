@@ -1,192 +1,192 @@
 {
-  "agent_servers": {
-    "codex": {
-      "default_model": "gpt-5.2-codex/high"
-    }
-  },
-  "ssh_connections": [
-    {
-      "host": "clab",
-      "username": "root",
-      "projects": [
+    "agent_servers": {
+        "codex": {
+            "default_model": "gpt-5.3-codex/high",
+        },
+    },
+    "ssh_connections": [
         {
-          "paths": ["/root"],
+            "host": "clab",
+            "username": "root",
+            "projects": [
+                {
+                    "paths": ["/root"],
+                },
+            ],
         },
-      ],
+    ],
+    "icon_theme": {
+        "mode": "system",
+        "light": "Material Icon Theme",
+        "dark": "Material Icon Theme",
     },
-  ],
-  "icon_theme": {
-    "mode": "system",
-    "light": "Material Icon Theme",
-    "dark": "Material Icon Theme",
-  },
-  "agent": {
-    "always_allow_tool_actions": true,
-    "default_profile": "ask",
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-5",
-    },
-  },
-  "vim_mode": false,
-  "features": {
-    "edit_prediction_provider": "none",
-  },
-  "scroll_beyond_last_line": "off",
-  "cursor_blink": false,
-  // "theme": "Gruvbox Light Hard",
-  "theme": {
-    "mode": "system",
-    "dark": "Gruvbox Dark",
-    "light": "Gruvbox Light",
-  },
-  "tab_size": 4,
-  "scrollbar": {
-    "show": "auto",
-  },
-  "bottom_dock_layout": "left_aligned",
-  "ui_font_size": 14,
-  "ui_font_family": "Geist Mono",
-  "buffer_font_size": 12,
-  "buffer_font_family": "Geist Mono",
-  "buffer_line_height": {
-    "custom": 1.25,
-  },
-  "lsp": {
-    "gopls": {
-      "initialization_options": {
-        "hints": {
-          "assignVariableTypes": true,
-          "compositeLiteralFields": true,
-          "compositeLiteralTypes": true,
-          "constantValues": true,
-          "functionTypeParameters": true,
-          "parameterNames": true,
-          "rangeVariableTypes": true,
+    "agent": {
+        "always_allow_tool_actions": true,
+        "default_profile": "ask",
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4-5",
         },
-      },
     },
-    // "pyright": {
-    //     "settings": {
-    //         "python": {
-    //             "pythonPath": ".venv/bin/python3",
-    //         },
-    //         "python.analysis": {
-    //             "diagnosticMode": "workspace",
-    //         },
-    //     },
-    // },
-    "terraform-ls": {
-      "initialization_options": {
-        "experimentalFeatures": {
-          "prefillRequiredFields": true,
+    "vim_mode": false,
+    "features": {
+        "edit_prediction_provider": "none",
+    },
+    "scroll_beyond_last_line": "off",
+    "cursor_blink": false,
+    // "theme": "Gruvbox Light Hard",
+    "theme": {
+        "mode": "system",
+        "dark": "Gruvbox Dark",
+        "light": "Gruvbox Light",
+    },
+    "tab_size": 4,
+    "scrollbar": {
+        "show": "auto",
+    },
+    "bottom_dock_layout": "left_aligned",
+    "ui_font_size": 14,
+    "ui_font_family": "Geist Mono",
+    "buffer_font_size": 12,
+    "buffer_font_family": "Geist Mono",
+    "buffer_line_height": {
+        "custom": 1.25,
+    },
+    "lsp": {
+        "gopls": {
+            "initialization_options": {
+                "hints": {
+                    "assignVariableTypes": true,
+                    "compositeLiteralFields": true,
+                    "compositeLiteralTypes": true,
+                    "constantValues": true,
+                    "functionTypeParameters": true,
+                    "parameterNames": true,
+                    "rangeVariableTypes": true,
+                },
+            },
         },
-      },
-    },
-    // "puppet-languageserver": {
-    //     "binary": {
-    //         "arguments": [
-    //             "--stdio",
-    //             "--puppet-settings=--environment,production"
-    //         ]
-    //     }
-    // }
-  },
-  "terminal": {
-    "font_size": 12,
-    "line_height": {
-      "custom": 1.25,
-    },
-    "dock": "bottom",
-  },
-  "git": {
-    "git_gutter": "tracked_files",
-    "inline_blame": {
-      "enabled": true,
-    },
-  },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false,
-  },
-  "languages": {
-    "Python": {
-      "language_servers": [
-        "ty",
-        "ruff",
-        "!basedpyright",
-        "!pyrefly",
-        "!pyright",
-        "!pylsp",
-      ],
-      "format_on_save": "on",
-      "formatter": [
-        {
-          "code_action": "source.organizeImports.ruff",
+        // "pyright": {
+        //     "settings": {
+        //         "python": {
+        //             "pythonPath": ".venv/bin/python3",
+        //         },
+        //         "python.analysis": {
+        //             "diagnosticMode": "workspace",
+        //         },
+        //     },
+        // },
+        "terraform-ls": {
+            "initialization_options": {
+                "experimentalFeatures": {
+                    "prefillRequiredFields": true,
+                },
+            },
         },
-        {
-          "code_action": "source.fixAll.ruff",
+        // "puppet-languageserver": {
+        //     "binary": {
+        //         "arguments": [
+        //             "--stdio",
+        //             "--puppet-settings=--environment,production"
+        //         ]
+        //     }
+        // }
+    },
+    "terminal": {
+        "font_size": 12,
+        "line_height": {
+            "custom": 1.25,
         },
-        {
-          "language_server": {
-            "name": "ruff",
-          },
+        "dock": "bottom",
+    },
+    "git": {
+        "git_gutter": "tracked_files",
+        "inline_blame": {
+            "enabled": true,
         },
-      ],
-      // "format_on_save": [
-      //     {
-      //         "external": {
-      //             "command": "ruff",
-      //             "arguments": [
-      //                 "check",
-      //                 "--select",
-      //                 "I",
-      //                 "--fix",
-      //                 "--stdin-filename",
-      //                 "{buffer_path}"
-      //             ]
-      //         }
-      //     },
-      //     {
-      //         "external": {
-      //             "command": "ruff",
-      //             "arguments": [
-      //                 "format",
-      //                 "--stdin-filename",
-      //                 "{buffer_path}"
-      //             ]
-      //         }
-      //     }
-      // ]
     },
-    "HTML": {
-      "tab_size": 2,
-      "format_on_save": "off",
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
     },
-    "YAML": {
-      "formatter": "language_server",
-      "tab_size": 2,
+    "languages": {
+        "Python": {
+            "language_servers": [
+                "ty",
+                "ruff",
+                "!basedpyright",
+                "!pyrefly",
+                "!pyright",
+                "!pylsp",
+            ],
+            "format_on_save": "on",
+            "formatter": [
+                {
+                    "code_action": "source.organizeImports.ruff",
+                },
+                {
+                    "code_action": "source.fixAll.ruff",
+                },
+                {
+                    "language_server": {
+                        "name": "ruff",
+                    },
+                },
+            ],
+            // "format_on_save": [
+            //     {
+            //         "external": {
+            //             "command": "ruff",
+            //             "arguments": [
+            //                 "check",
+            //                 "--select",
+            //                 "I",
+            //                 "--fix",
+            //                 "--stdin-filename",
+            //                 "{buffer_path}"
+            //             ]
+            //         }
+            //     },
+            //     {
+            //         "external": {
+            //             "command": "ruff",
+            //             "arguments": [
+            //                 "format",
+            //                 "--stdin-filename",
+            //                 "{buffer_path}"
+            //             ]
+            //         }
+            //     }
+            // ]
+        },
+        "HTML": {
+            "tab_size": 2,
+            "format_on_save": "off",
+        },
+        "YAML": {
+            "formatter": "language_server",
+            "tab_size": 2,
+        },
+        "JSON": {
+            "tab_size": 2,
+            "format_on_save": "on",
+        },
+        "Ruby": {
+            "tab_size": 2,
+            "language_servers": ["!solargraph", "!rubocop", "!ruby-lsp"],
+        },
+        "Puppet": {
+            "tab_size": 2,
+            "format_on_save": "on",
+        },
     },
-    "JSON": {
-      "tab_size": 2,
-      "format_on_save": "on",
+    "line_indicator_format": "short",
+    "tab_bar": {
+        "show_nav_history_buttons": true,
     },
-    "Ruby": {
-      "tab_size": 2,
-      "language_servers": ["!solargraph", "!rubocop", "!ruby-lsp"],
+    "file_types": {
+        "Dockerfile": ["Dockerfile*"],
+        "Ruby": ["*.erb", "*.rb"],
+        "Puppet": ["*.pp"],
     },
-    "Puppet": {
-      "tab_size": 2,
-      "format_on_save": "on",
-    },
-  },
-  "line_indicator_format": "short",
-  "tab_bar": {
-    "show_nav_history_buttons": true,
-  },
-  "file_types": {
-    "Dockerfile": ["Dockerfile*"],
-    "Ruby": ["*.erb", "*.rb"],
-    "Puppet": ["*.pp"],
-  },
 }
