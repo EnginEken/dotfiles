@@ -17,8 +17,8 @@
     ],
     "icon_theme": {
         "mode": "system",
-        "light": "Material Icon Theme",
-        "dark": "Material Icon Theme",
+        "light": "Catppuccin Latte",
+        "dark": "Catppuccin Mocha",
     },
     "agent": {
         "always_allow_tool_actions": true,
